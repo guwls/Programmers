@@ -1,24 +1,31 @@
-import java.util.Stack;
+import java.util.Arrays;
 
 class Solution {
     boolean solution(String s) {
         boolean answer = true;
-
-        Stack<Character> stack = new Stack<>();
+        int count = 0;
         
-        for (char ch : s.toCharArray()) {
-            if (ch == '(') {
-                stack.push(ch);
-                continue;
+        for (char c : s.toCharArray()) {
+            if (c == '(') {
+                count++;
             }
-            
-            if (stack.isEmpty()) return false;
-            
-            stack.pop();
-            
+            else {
+                count--;
+                if (count < 0) {
+                    answer = false;
+                    
+                    return answer;
+                }
+            }
         }
-            
-        return stack.isEmpty();
+        
+        if (count == 0) {
+            answer = true;
+        }
+        else {
+            answer = false;
+        }
+        
+        return answer;
     }
-
 }
