@@ -1,23 +1,14 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 
 class Solution {
-    public static String solution(String s) {
-        String answer = "";
+    public String solution(String s) {
+        int[] nums = Arrays.stream(s.split(" "))
+            .mapToInt(Integer::parseInt)
+            .toArray();
+        
+        int min = Arrays.stream(nums).min().getAsInt();
+        int max = Arrays.stream(nums).max().getAsInt();
 
-        String[] strArrary = s.split(" ");
-
-        List<Integer> numbers = new ArrayList<>();
-        for (String str : strArrary) {
-            numbers.add(Integer.parseInt(str));
-        }
-
-        int max = Collections.max(numbers);
-        int min = Collections.min(numbers);
-
-        answer = min + " " + max;
-
-        return answer;
+        return min + " " + max;
     }
 }
