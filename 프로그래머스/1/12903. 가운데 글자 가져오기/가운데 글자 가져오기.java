@@ -2,11 +2,15 @@ class Solution {
     public String solution(String s) {
         String answer = "";
         
-        if (s.length() % 2 == 0) {
-            answer = s.substring((s.length() / 2 ) - 1, (s.length() / 2) + 1);
+        String[] arr = s.split("");
+        
+        int div = arr.length / 2;
+        
+        if (arr.length % 2 == 0) {
+            answer = arr[div-1] + arr[div];
         }
         else {
-            answer = s.substring(s.length() / 2, (s.length() / 2) + 1);
+            answer = arr[div]; 
         }
         
         return answer;
